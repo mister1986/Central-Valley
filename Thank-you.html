@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Almost Done! Schedule Your Appointment | Central Valley Dentistry</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal-dark: #0A3D47; --teal-mid: #0E6E7E; --teal-lite: #16A0B5; --teal-pale: #D6EEF2;
+  --coral: #E8622A; --coral2: #F07A47; --amber: #F5A623;
+  --bg-page: #F8FBFC; --bg-card: #FFFFFF; --bg-section: #F0F7F9;
+  --text: #0F2A32; --muted: #5A7A82; --border: #C8E2E8;
+  --success: #1A7A50; --success-bg: #E8F7F0; --success-bd: #A5D9C0;
+  --warn: #9A5800; --warn-bg: #FFF4E6;
+  --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:24px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg-page);color:var(--text);line-height:1.65;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+/* HEADER */
+.hdr{background:var(--teal-dark);padding:12px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);}
+.hdr-logo{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;}
+.hdr-logo span{color:var(--teal-lite);}
+.hdr-phone{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.85);font-size:14px;font-weight:600;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);padding:8px 16px;border-radius:100px;transition:background .2s;}
+.hdr-phone:hover{background:rgba(255,255,255,0.13);}
+.hdr-phone svg{fill:var(--teal-lite);width:14px;height:14px;flex-shrink:0;}
+
+/* PROGRESS BAR */
+.progress-wrap{background:#fff;border-bottom:1px solid var(--border);padding:0;}
+.progress-inner{max-width:1100px;margin:0 auto;padding:14px 40px;}
+.progress-label{font-size:12px;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.progress-label .pulse{width:8px;height:8px;background:var(--coral);border-radius:50%;animation:pulse 1.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.progress-track{height:8px;background:#E0EFF2;border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;width:70%;background:linear-gradient(90deg,var(--teal-mid),var(--teal-lite));border-radius:100px;position:relative;}
+.progress-fill::after{content:'70%';position:absolute;right:8px;top:-18px;font-size:10px;font-weight:700;color:var(--teal-mid);}
+.progress-steps{display:flex;justify-content:space-between;margin-top:6px;}
+.ps{font-size:10px;color:var(--muted);}
+.ps.done{color:var(--teal-mid);font-weight:600;}
+.ps.active{color:var(--coral);font-weight:700;}
+
+/* CONFIRM BANNER */
+.confirm-banner{background:var(--success-bg);border-bottom:2px solid var(--success);padding:13px 24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;color:var(--success);font-weight:600;flex-wrap:wrap;}
+.cb-icon{width:22px;height:22px;background:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:12px;}
+
+/* HERO — confirmation + calendar */
+.hero{background:var(--teal-dark);padding:52px 40px 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(22,160,181,0.1) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(22,160,181,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 500px;gap:48px;align-items:start;position:relative;z-index:1;}
+
+/* left side */
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(22,160,181,0.18);border:1px solid rgba(22,160,181,0.35);border-radius:100px;padding:5px 14px;font-size:11px;color:#A8DEE8;letter-spacing:1.3px;text-transform:uppercase;font-weight:600;margin-bottom:18px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,50px);color:#fff;line-height:1.15;margin-bottom:16px;font-weight:700;}
+.hero h1 em{color:var(--amber);font-style:normal;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.62);margin-bottom:24px;font-weight:300;line-height:1.75;max-width:440px;}
+.hero-sub strong{color:rgba(255,255,255,0.9);font-weight:600;}
+
+/* what happens next */
+.next-strip{display:flex;border:1px solid rgba(22,160,181,0.2);border-radius:var(--r-md);overflow:hidden;margin-bottom:28px;}
+.ns{flex:1;padding:10px 12px;text-align:center;border-right:1px solid rgba(22,160,181,0.15);}
+.ns:last-child{border-right:none;}
+.ns-n{font-size:9px;color:var(--teal-lite);font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px;}
+.ns-t{font-size:11px;color:rgba(255,255,255,0.42);line-height:1.3;}
+.ns.active-step .ns-n{color:var(--amber);}
+.ns.active-step .ns-t{color:rgba(255,255,255,0.7);}
+
+/* we need to know bullets */
+.need-to-know{background:rgba(22,160,181,0.1);border:1px solid rgba(22,160,181,0.22);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:24px;}
+.ntk-title{font-size:14px;font-weight:700;color:#A8DEE8;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.ntk-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.ntk-li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:rgba(255,255,255,0.78);}
+.ntk-arrow{width:18px;height:18px;background:var(--coral);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:9px;color:#fff;}
+.ntk-note{font-size:13px;color:rgba(255,255,255,0.5);margin-top:14px;padding-top:12px;border-top:1px solid rgba(22,160,181,0.2);line-height:1.65;}
+
+/* calendar card */
+.cal-card{background:var(--bg-card);border-radius:var(--r-xl);overflow:hidden;box-shadow:0 12px 48px rgba(10,61,71,0.30);}
+.cal-top{background:var(--teal-mid);padding:18px 22px;display:flex;align-items:center;gap:12px;}
+.cal-top-icon{width:36px;height:36px;background:rgba(255,255,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cal-top-icon svg{stroke:#fff;fill:none;stroke-width:2;}
+.cal-top-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:700;}
+.cal-top-sub{font-size:12px;color:rgba(255,255,255,0.65);}
+.cal-iframe-wrap{padding:0;}
+.cal-iframe-wrap iframe{width:100%;height:560px;border:none;display:block;}
+.cal-bottom{padding:14px 20px;background:var(--teal-pale);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--teal-dark);font-weight:500;}
+.cal-bottom svg{fill:var(--teal-mid);flex-shrink:0;}
+
+/* OFFER VALUE CARD */
+.offer-section{background:#fff;padding:48px 40px;}
+.offer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:40px;align-items:center;}
+.offer-card{background:var(--teal-dark);border-radius:var(--r-xl);padding:32px 28px;text-align:center;position:relative;overflow:hidden;}
+.offer-card::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(22,160,181,0.1);}
+.offer-badge{display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:14px;}
+.offer-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:#fff;font-weight:700;margin-bottom:18px;line-height:1.3;}
+.offer-price-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px;}
+.offer-old{font-size:20px;color:rgba(255,255,255,0.3);text-decoration:line-through;}
+.offer-new{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--teal-lite);line-height:1;}
+.offer-free{font-size:28px;font-weight:700;color:var(--amber);margin-bottom:18px;}
+.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;}
+.cd-item{background:rgba(22,160,181,0.15);border:1px solid rgba(22,160,181,0.25);border-radius:var(--r-sm);padding:10px 4px;}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--teal-lite);line-height:1;}
+.cd-lbl{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.8px;}
+.offer-right h2{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,34px);color:var(--teal-dark);font-weight:700;margin-bottom:14px;line-height:1.3;}
+.offer-right p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.offer-img{border-radius:var(--r-lg);overflow:hidden;margin-top:16px;}
+.offer-img img{width:100%;border-radius:var(--r-lg);}
+
+/* MAIN VIDEO */
+.video-section{background:var(--bg-section);padding:56px 40px;}
+.video-inner{max-width:740px;margin:0 auto;text-align:center;}
+.lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--teal-mid);font-weight:700;margin-bottom:7px;}
+.hd{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,36px);color:var(--teal-dark);line-height:1.2;font-weight:700;margin-bottom:10px;}
+.sub{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px;}
+.yt-embed{border-radius:var(--r-xl);overflow:hidden;position:relative;aspect-ratio:16/9;background:var(--teal-dark);box-shadow:0 8px 40px rgba(10,61,71,0.2);}
+.yt-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+
+/* JAW BONE SECTION */
+.jaw-section{background:#fff;padding:56px 40px;}
+.jaw-inner{max-width:900px;margin:0 auto;}
+.jaw-stat{background:var(--teal-dark);border-radius:var(--r-lg);padding:24px 28px;margin-bottom:32px;text-align:center;}
+.jaw-stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--coral);line-height:1;margin-bottom:6px;}
+.jaw-stat-text{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.6;}
+.jaw-stat-text strong{color:#fff;}
+.jaw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+.jaw-img{border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/3;background:var(--bg-section);}
+.jaw-img img{width:100%;height:100%;object-fit:cover;}
+.jaw-copy{font-size:14px;color:var(--muted);line-height:1.8;}
+.jaw-copy p{margin-bottom:12px;}
+.jaw-copy p:last-child{margin-bottom:0;}
+.jaw-copy strong{color:var(--text);font-weight:600;}
+
+/* TESTIMONIAL VIDEOS */
+.test-section{background:var(--bg-section);padding:56px 40px;}
+.test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:900px;margin:32px auto 0;}
+.tv-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.tv-thumb{position:relative;aspect-ratio:16/9;background:var(--teal-dark);cursor:pointer;}
+.tv-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.tv-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,61,71,0.35);}
+.tv-play-btn{width:54px;height:54px;background:var(--coral);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 14px rgba(232,98,42,0.15);transition:transform .2s;}
+.tv-play-btn:hover{transform:scale(1.1);}
+.tv-play-btn svg{fill:#fff;margin-left:4px;}
+.tv-info{padding:14px 16px;}
+.tv-name{font-size:13px;font-weight:700;color:var(--teal-dark);margin-bottom:3px;}
+.tv-desc{font-size:12px;color:var(--muted);}
+.tv-stars{color:var(--amber);font-size:12px;letter-spacing:2px;margin-bottom:4px;}
+
+/* DR B SECTION */
+.drb-section{background:var(--teal-dark);padding:56px 40px;}
+.drb-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center;}
+.drb-photo{border-radius:var(--r-xl);overflow:hidden;border:3px solid rgba(22,160,181,0.3);}
+.drb-photo img{width:100%;display:block;}
+.drb-content .lbl{color:var(--teal-lite);}
+.drb-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);color:#fff;font-weight:700;margin-bottom:14px;line-height:1.25;}
+.drb-content p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:12px;}
+.drb-creds{display:flex;flex-direction:column;gap:9px;margin-top:18px;}
+.drb-cred{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.78);font-weight:500;}
+.drb-dot{width:7px;height:7px;background:var(--teal-lite);border-radius:50%;flex-shrink:0;}
+
+/* FAQ */
+.faq-section{background:#fff;padding:56px 40px;}
+.faq-inner{max-width:900px;margin:0 auto;}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;}
+.fq{background:var(--bg-page);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 20px;transition:border-color .2s;}
+.fq:hover{border-color:var(--teal-lite);}
+.fq-icon{width:32px;height:32px;background:var(--teal-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;}
+.fq-icon svg{fill:var(--teal-mid);}
+.fq-title{font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:6px;line-height:1.4;}
+.fq-body{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* FINAL CTA */
+.fcta{background:var(--teal-dark);padding:64px 40px;text-align:center;position:relative;overflow:hidden;}
+.fcta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(22,160,181,0.1) 0%,transparent 70%);pointer-events:none;}
+.fcta-inner{max-width:560px;margin:0 auto;position:relative;z-index:1;}
+.fcta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.8vw,42px);color:#fff;margin-bottom:12px;font-weight:700;line-height:1.2;}
+.fcta-sub{font-size:15px;color:rgba(255,255,255,0.55);margin-bottom:28px;font-weight:300;}
+.fcta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-coral{display:inline-flex;align-items:center;gap:9px;background:var(--coral);color:#fff;font-weight:700;font-size:15px;padding:15px 34px;border-radius:100px;transition:background .2s,transform .15s;}
+.btn-coral:hover{background:var(--coral2);transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.65);font-weight:600;font-size:14px;padding:14px 26px;border-radius:100px;border:1px solid rgba(22,160,181,0.3);transition:background .2s,color .2s;}
+.btn-ghost:hover{background:rgba(22,160,181,0.1);color:#fff;}
+.terms{margin-top:18px;font-size:11px;color:rgba(255,255,255,0.3);}
+.terms a{color:rgba(255,255,255,0.4);text-decoration:underline;}
+
+/* FOOTER */
+.foot{background:#061E24;padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.foot-logo{font-family:'Cormorant Garamond',serif;color:#fff;font-size:17px;}
+.foot-logo span{color:var(--teal-lite);}
+.foot-addr{font-size:11px;color:rgba(255,255,255,0.25);}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+.foot-links a{font-size:11px;color:rgba(255,255,255,0.3);}
+.foot-links a:hover{color:rgba(255,255,255,0.6);}
+
+/* MOBILE STICKY */
+.mob-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:var(--teal-dark);border-top:1px solid rgba(22,160,181,0.2);padding:10px 14px;gap:9px;}
+.mob-appt{flex:2;background:var(--coral);color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:100px;text-align:center;}
+.mob-call{flex:1;background:transparent;color:#fff;font-weight:600;font-size:13px;padding:13px;border-radius:100px;text-align:center;border:1px solid rgba(22,160,181,0.3);}
+
+/* SHARED */
+.mw{max-width:1100px;margin:0 auto;}
+.sec-center{text-align:center;max-width:640px;margin:0 auto 32px;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp .65s ease both;}
+.hero-badge{animation-delay:.05s}.hero h1{animation-delay:.12s}.hero-sub{animation-delay:.18s}
+.next-strip{animation-delay:.22s}.need-to-know{animation-delay:.26s}
+.cal-card{animation:fadeUp .6s ease .15s both;}
+
+/* RESPONSIVE */
+@media(max-width:1060px){
+  .hero-inner{grid-template-columns:1fr;}.cal-card{max-width:520px;}
+  .offer-inner{grid-template-columns:1fr;}.drb-inner{grid-template-columns:1fr;}
+  .drb-photo{max-width:240px;}
+}
+@media(max-width:768px){
+  .hdr{padding:11px 18px;}.hero{padding:36px 18px 48px;}
+  .offer-section,.video-section,.jaw-section,.test-section,.drb-section,.faq-section,.fcta{padding:44px 18px;}
+  .jaw-grid{grid-template-columns:1fr 1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .faq-grid{grid-template-columns:1fr;}
+  .mob-bar{display:flex;} body{padding-bottom:66px;}
+  .foot{flex-direction:column;align-items:center;text-align:center;}
+  .progress-inner{padding:14px 20px;}
+  .countdown-grid{grid-template-columns:repeat(4,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">Central Valley <span>Dentistry</span></div>
+  <a href="tel:6022460385" class="hdr-phone">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    (602) 246-0385
+  </a>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-label"><span class="pulse"></span>WAIT, One Last Step..</div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+    <div class="progress-steps">
+      <span class="ps done">✓ Info Submitted</span>
+      <span class="ps active">→ Schedule Appointment</span>
+      <span class="ps">Consultation Day</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM BANNER -->
+<div class="confirm-banner">
+  <span class="cb-icon">✓</span>
+  <strong>Your information was received!</strong> &nbsp;One last step — pick your appointment time below to lock in your free consultation.
+</div>
+
+<!-- HERO + CALENDAR -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">🎉 Almost There — Step 2 of 2</div>
+      <h1>Schedule Your <em>Free Consultation</em><br>& 3D X-Ray — <em>$0</em></h1>
+      <p class="hero-sub">You're one step away from finding out if you qualify for same-day implants. <strong>Pick a time that works for you</strong> — we'll confirm with a call or text shortly.</p>
+
+      <!-- what happens next -->
+      <div class="next-strip">
+        <div class="ns done"><div class="ns-n">✓ Done</div><div class="ns-t">Info submitted</div></div>
+        <div class="ns active-step"><div class="ns-n">→ Now</div><div class="ns-t">Pick your slot</div></div>
+        <div class="ns"><div class="ns-n">Step 3</div><div class="ns-t">3D scan + plan</div></div>
+        <div class="ns"><div class="ns-n">Step 4</div><div class="ns-t">Walk out smiling</div></div>
+      </div>
+
+      <!-- we need to know -->
+      <div class="need-to-know">
+        <div class="ntk-title">We need to know before your visit</div>
+        <ul class="ntk-list">
+          <li class="ntk-li"><span class="ntk-arrow">→</span>If you have enough bone left for dental implants...</li>
+          <li class="ntk-li"><span class="ntk-arrow">→</span>If there is any malocclusion present...</li>
+          <li class="ntk-li"><span class="ntk-arrow">→</span>If you have any infection...</li>
+          <li class="ntk-li"><span class="ntk-arrow">→</span>And a few other factors that affect your eligibility...</li>
+        </ul>
+        <div class="ntk-note">We check all of this with a simple, painless 3D X-ray scan — included in your package at no charge. Look forward to a call or text from our staff to confirm your selected time.</div>
+      </div>
+    </div>
+
+    <!-- CALENDAR CARD -->
+    <div class="cal-card">
+      <div class="cal-top">
+        <div class="cal-top-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="cal-top-title">Schedule Your Appointment</div>
+          <div class="cal-top-sub">Free 3D X-Ray & Consultation included</div>
+        </div>
+      </div>
+      <div class="cal-iframe-wrap">
+        <iframe
+          src="https://calendar.centralvalleydentistry.com/widget/booking/KEItMy40piaJrEvAZGn2"
+          loading="eager"
+          scrolling="no"
+          title="Schedule your free dental implant consultation">
+        </iframe>
+      </div>
+      <div class="cal-bottom">
+        <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Your slot is confirmed instantly — no waiting for a callback
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER VALUE CARD + WHY SECTION -->
+<section class="offer-section">
+  <div class="offer-inner">
+    <div class="offer-card">
+      <div class="offer-badge">Included Free</div>
+      <div class="offer-title">3D Panoramic X-Ray & Consultation</div>
+      <div class="offer-price-row">
+        <span class="offer-old">$495</span>
+        <span class="offer-new">$0</span>
+      </div>
+      <div class="offer-free">FREE</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:12px;">This offer expires in:</div>
+      <div class="countdown-grid">
+        <div class="cd-item"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-item"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-item"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-item"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Secs</div></div>
+      </div>
+    </div>
+    <div class="offer-right">
+      <div class="lbl">Why this matters</div>
+      <h2>Why is the 3D Scan Essential for Eligibility?</h2>
+      <p>On average <strong style="color:var(--coral);">25% of your jaw bone is LOST</strong> within the first year that a tooth is missing. Without this scan, we simply cannot determine if you're a candidate.</p>
+      <p>We've had patients put off coming in — only to find out they were no longer eligible because they had lost too much bone. They told us they would've paid any amount to find out sooner.</p>
+      <div class="offer-img">
+        <img src="https://www.centralvalleydentistry.com/wp-content/uploads/2024/09/impant.jpg" alt="Dental implant illustration" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONGRATS VIDEO -->
+<section class="video-section">
+  <div class="video-inner">
+    <div class="lbl">Watch this now</div>
+    <h2 class="hd">Congrats — Dr. B Has a Message For You</h2>
+    <p class="sub">Watch this short video to know exactly what to expect at your consultation — and how to get the absolute most out of it.</p>
+    <div class="yt-embed">
+      <iframe
+        src="https://www.youtube.com/embed/KDXqPeYi55g?rel=0&modestbranding=1"
+        title="Congrats! We're Scheduling Your Free Dental Implant Consultation – Next Steps"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- JAW BONE LOSS SECTION -->
+<section class="jaw-section">
+  <div class="jaw-inner">
+    <div class="sec-center">
+      <div class="lbl">Don't wait — here's why</div>
+      <h2 class="hd">How Missing Teeth Affect Your Face Shape & Jawline</h2>
+    </div>
+    <div class="jaw-stat">
+      <div class="jaw-stat-num">25%</div>
+      <div class="jaw-stat-text">of your jaw bone is lost <strong>within the 1st year</strong> a tooth goes missing — and it accelerates every year after that.</div>
+    </div>
+    <div class="jaw-grid">
+      <div class="jaw-img"><img src="https://www.centralvalleydentistry.com/wp-content/uploads/2024/09/jawnew1.jpg" alt="Jaw bone loss stage 1" loading="lazy"></div>
+      <div class="jaw-img"><img src="https://www.centralvalleydentistry.com/wp-content/uploads/2024/09/jawnew2.jpg" alt="Jaw bone loss stage 2" loading="lazy"></div>
+      <div class="jaw-img"><img src="https://www.centralvalleydentistry.com/wp-content/uploads/2024/09/jawnew3.jpg" alt="Jaw bone loss stage 3" loading="lazy"></div>
+      <div class="jaw-img"><img src="https://www.centralvalleydentistry.com/wp-content/uploads/2024/09/jawnew4.jpg" alt="Jaw bone loss stage 4" loading="lazy"></div>
+    </div>
+    <div class="jaw-copy">
+      <p>If there isn't enough bone left, you will not be eligible for dental implants.</p>
+      <p>We've had patients put off coming in… only to later find out they were no longer eligible because they had lost too much bone. <strong>They told us they would've paid any amount of money to go back in time and find out sooner.</strong></p>
+      <p>Don't let that be your story. Your free 3D scan is already included — all you need to do is show up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT TESTIMONIAL VIDEOS -->
+<section class="test-section">
+  <div class="mw">
+    <div class="sec-center">
+      <div class="lbl">Real patient stories</div>
+      <h2 class="hd">Hear What Our Patients Say After Their Implants</h2>
+      <p class="sub">These are real Central Valley Dentistry patients. Watch their stories while you wait for your confirmation call.</p>
+    </div>
+    <div class="test-grid">
+      <div class="tv-card">
+        <div class="tv-thumb">
+          <img src="https://img.youtube.com/vi/6SfGcKW9x_0/hqdefault.jpg" alt="All on 4 with Confidence patient story" loading="lazy">
+          <div class="tv-play">
+            <a href="https://www.youtube.com/watch?v=6SfGcKW9x_0" target="_blank" rel="noopener" class="tv-play-btn" aria-label="Watch: All on 4 with Confidence">
+              <svg width="20" height="20" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="tv-info">
+          <div class="tv-stars">★★★★★</div>
+          <div class="tv-name">All-on-4 with Confidence</div>
+          <div class="tv-desc">Full arch transformation — real patient, real results</div>
+        </div>
+      </div>
+      <div class="tv-card">
+        <div class="tv-thumb">
+          <img src="https://img.youtube.com/vi/MhHWbbrqw1A/hqdefault.jpg" alt="Debbie's All-on-4 Journey" loading="lazy">
+          <div class="tv-play">
+            <a href="https://www.youtube.com/watch?v=MhHWbbrqw1A" target="_blank" rel="noopener" class="tv-play-btn" aria-label="Watch: Debbie's All-on-4 Journey">
+              <svg width="20" height="20" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="tv-info">
+          <div class="tv-stars">★★★★★</div>
+          <div class="tv-name">Debbie's All-on-4 Journey</div>
+          <div class="tv-desc">From dentures to a permanent smile — Debbie's story</div>
+        </div>
+      </div>
+      <div class="tv-card">
+        <div class="tv-thumb">
+          <img src="https://img.youtube.com/vi/RW4G47XVzQ0/hqdefault.jpg" alt="Dental Implants Phoenix AZ patient story" loading="lazy">
+          <div class="tv-play">
+            <a href="https://www.youtube.com/watch?v=RW4G47XVzQ0" target="_blank" rel="noopener" class="tv-play-btn" aria-label="Watch: Dental Implant Phoenix AZ">
+              <svg width="20" height="20" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="tv-info">
+          <div class="tv-stars">★★★★★</div>
+          <div class="tv-name">Dental Implant — Phoenix, AZ</div>
+          <div class="tv-desc">A Phoenix patient shares their experience with Dr. B</div>
+        </div>
+      </div>
+      <div class="tv-card">
+        <div class="tv-thumb">
+          <img src="https://img.youtube.com/vi/aOl-S9HNCiY/hqdefault.jpg" alt="Briana's Implant Story" loading="lazy">
+          <div class="tv-play">
+            <a href="https://www.youtube.com/watch?v=aOl-S9HNCiY" target="_blank" rel="noopener" class="tv-play-btn" aria-label="Watch: Briana's Implant Story">
+              <svg width="20" height="20" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="tv-info">
+          <div class="tv-stars">★★★★★</div>
+          <div class="tv-name">Briana's Implant Story</div>
+          <div class="tv-desc">How Briana got her confidence back with Dr. Behbahani</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DR B SECTION -->
+<section class="drb-section">
+  <div class="drb-inner">
+    <div>
+      <div class="drb-photo">
+        <img src="https://www.centralvalleydentistry.com/wp-content/uploads/2024/09/Dr.-Babak-Behbahani-851x1024.png" alt="Dr. Babak Behbahani" loading="lazy">
+      </div>
+    </div>
+    <div class="drb-content">
+      <div class="lbl">Your doctor</div>
+      <h2>Dr. Babak Behbahani, DDS</h2>
+      <p>Dr. Behbahani grew up in Phoenix. He attended Arizona State University where he received his Bachelor in Biology as a cum laude graduate with honors. He then moved to Portland, Oregon for dental school where he received his Doctor of Dental Medicine degree.</p>
+      <p>During his training, Dr. Behbahani served in rural areas of Oregon providing oral care for underprivileged families. He completed a post-graduate implant training through White Cap Institute and has since completed hundreds of hours in postgraduate courses in implant dentistry and surgical procedures.</p>
+      <div class="drb-creds">
+        <div class="drb-cred"><span class="drb-dot"></span>15+ years dedicated implant dentistry in Phoenix</div>
+        <div class="drb-cred"><span class="drb-dot"></span>10,000+ implants placed with documented results</div>
+        <div class="drb-cred"><span class="drb-dot"></span>Nationally recognized educator — trains other dentists</div>
+        <div class="drb-cred"><span class="drb-dot"></span>IV sedation certified — zero pain during procedure</div>
+        <div class="drb-cred"><span class="drb-dot"></span>4.9★ Google rating across 900+ verified reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="sec-center">
+      <div class="lbl">Common questions</div>
+      <h2 class="hd">Answers Before Your Consultation</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="fq">
+        <div class="fq-icon"><svg width="16" height="16" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM263 90c-55 0-89 23-117 64l35 26c17-23 30-36 57-36 21 0 46 13 46 33 0 15-12 23-33 34C226 239 216 255 216 296h56c0-28 83-30 83-107C355 132 295 90 263 90zM256 338c-25 0-46 21-46 46s21 46 46 46 46-21 46-46-21-46-46-46z"/></svg></div>
+        <div class="fq-title">What makes dental implants so great?</div>
+        <div class="fq-body">Titanium implants cannot decay and fuse with your bone biologically — becoming a lifelong root. They also preserve jaw bone and prevent it from dwindling away.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-icon"><svg width="16" height="16" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM263 90c-55 0-89 23-117 64l35 26c17-23 30-36 57-36 21 0 46 13 46 33 0 15-12 23-33 34C226 239 216 255 216 296h56c0-28 83-30 83-107C355 132 295 90 263 90zM256 338c-25 0-46 21-46 46s21 46 46 46 46-21 46-46-21-46-46-46z"/></svg></div>
+        <div class="fq-title">Why can't I just get dentures instead?</div>
+        <div class="fq-body">Dentures are cheaper upfront but the majority of patients end up hating them — they cause pain, discomfort, and accelerate bone loss. Most wish they'd chosen implants from the start.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-icon"><svg width="16" height="16" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM263 90c-55 0-89 23-117 64l35 26c17-23 30-36 57-36 21 0 46 13 46 33 0 15-12 23-33 34C226 239 216 255 216 296h56c0-28 83-30 83-107C355 132 295 90 263 90zM256 338c-25 0-46 21-46 46s21 46 46 46 46-21 46-46-21-46-46-46z"/></svg></div>
+        <div class="fq-title">Will my procedure hurt?</div>
+        <div class="fq-body">No. We perform all procedures under IV sedation — you won't feel a thing. Post-op pain can be significantly reduced with prescription pain management we provide.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-icon"><svg width="16" height="16" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM263 90c-55 0-89 23-117 64l35 26c17-23 30-36 57-36 21 0 46 13 46 33 0 15-12 23-33 34C226 239 216 255 216 296h56c0-28 83-30 83-107C355 132 295 90 263 90zM256 338c-25 0-46 21-46 46s21 46 46 46 46-21 46-46-21-46-46-46z"/></svg></div>
+        <div class="fq-title">Is the 3D scan painful?</div>
+        <div class="fq-body">Definitely not. The machine simply rotates around your head taking digital pictures. It's completely non-invasive and much more accurate than traditional X-rays.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-icon"><svg width="16" height="16" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM263 90c-55 0-89 23-117 64l35 26c17-23 30-36 57-36 21 0 46 13 46 33 0 15-12 23-33 34C226 239 216 255 216 296h56c0-28 83-30 83-107C355 132 295 90 263 90zM256 338c-25 0-46 21-46 46s21 46 46 46 46-21 46-46-21-46-46-46z"/></svg></div>
+        <div class="fq-title">What happens at the appointment?</div>
+        <div class="fq-body">You'll be greeted by our staff, filled in on your situation, and taken for a painless 3D Panoramic Scan. Then Dr. B reviews your case and presents a personalized plan — all in one visit.</div>
+      </div>
+      <div class="fq">
+        <div class="fq-icon"><svg width="16" height="16" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM263 90c-55 0-89 23-117 64l35 26c17-23 30-36 57-36 21 0 46 13 46 33 0 15-12 23-33 34C226 239 216 255 216 296h56c0-28 83-30 83-107C355 132 295 90 263 90zM256 338c-25 0-46 21-46 46s21 46 46 46 46-21 46-46-21-46-46-46z"/></svg></div>
+        <div class="fq-title">How much do dental implants cost?</div>
+        <div class="fq-body">Every procedure is different. Our All-on-4 starts at $11,900/arch. To get an accurate estimate we need to see your scans — that's exactly what the free consultation is for.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta">
+  <div class="fcta-inner">
+    <div class="lbl" style="color:var(--teal-lite);">Haven't scheduled yet?</div>
+    <h2>Pick Your Appointment Time Now</h2>
+    <div class="fcta-sub">Your free 3D X-ray + consultation is reserved — don't let it expire. Only a few slots remain this week.</div>
+    <div class="fcta-btns">
+      <a href="#top" class="btn-coral" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule My Appointment
+      </a>
+      <a href="tel:6022460385" class="btn-ghost">📞 Call (602) 246-0385</a>
+    </div>
+    <div class="terms"><a href="#">Terms & Conditions</a> · <a href="#">Privacy Policy</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-logo">Central Valley <span>Dentistry</span></div>
+  <div class="foot-addr">6232 North 7th St. Suite 201, Phoenix, AZ 85014 · (602) 246-0385</div>
+  <div class="foot-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms & Conditions</a>
+    <a href="#">HIPAA Notice</a>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="mob-bar">
+  <a href="#top" class="mob-appt" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Schedule Now</a>
+  <a href="tel:6022460385" class="mob-call">📞 Call</a>
+</div>
+
+<script>
+// Evergreen 30-day countdown
+var KEY='cvd_cd_end';
+var stored=localStorage.getItem(KEY);
+var endTime;
+if(stored){
+  endTime=parseInt(stored,10);
+  if(isNaN(endTime)||endTime<Date.now()){
+    endTime=Date.now()+(30*24*3600*1000);
+    localStorage.setItem(KEY,endTime);
+  }
+} else {
+  endTime=Date.now()+(30*24*3600*1000);
+  localStorage.setItem(KEY,endTime);
+}
+function tickCountdown(){
+  var diff=endTime-Date.now();
+  if(diff<=0){diff=0;}
+  var d=Math.floor(diff/86400000);
+  var h=Math.floor((diff%86400000)/3600000);
+  var m=Math.floor((diff%3600000)/60000);
+  var s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+tickCountdown();setInterval(tickCountdown,1000);
+
+// Scroll fade-in
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.tv-card,.fq,.jaw-img,.offer-card').forEach(function(el){
+  el.style.opacity='0';el.style.transform='translateY(18px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
